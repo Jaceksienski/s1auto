@@ -8,13 +8,13 @@ public class MerchantTemplates {
             Map.entry(
                     MerchantType.MerchantGP_es,
                     new Merchant(
-                            "appId_1",
-                            "appKey_1",
+                            "i9R0byBBor6RqTQNj3g4MuVBwH5rd7yR",
+                            "QVefNGo6bkMcjveA",
                             "channel_1",
                             "environment_1",
-                            "https://merchant1.com/challenge",
-                            "https://merchant1.com/method",
-                            "https://merchant1.com/contact",
+                            "https://www.example.com/challengeNotificationUrl",
+                            "https://www.example.com/methodNotificationUrl",
+                            "https://www.example.com/methodNotificationUrl",
                             "transaction_processing"
                     )
             ),

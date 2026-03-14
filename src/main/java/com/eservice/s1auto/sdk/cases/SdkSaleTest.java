@@ -1,8 +1,9 @@
 package com.eservice.s1auto.sdk.cases;
 
 import com.eservice.s1auto.input.TestData;
+import com.eservice.s1auto.sdk.config.BaseTestClass;
 
-public class SdkSaleTest implements Runnable{
+public class SdkSaleTest extends BaseTestClass implements Runnable {
 
     private final TestData testData;
 
@@ -10,14 +11,15 @@ public class SdkSaleTest implements Runnable{
         this.testData = testData;
     }
 
+    @Override
     public void run() {
-        System.out.println("Running SDK Sale test...");
-        System.out.println("Card: " + testData.getCard());
-        System.out.println("Merchant: " + testData.getMerchant());
-        System.out.println("Currency: " + testData.getCurrency());
 
-        // tutaj robisz właściwe kroki testowe SDK Sale
 
+        boolean isApiReachable = true;
+
+        if (!isApiReachable) {
+            throw new RuntimeException("Nie można połączyć się z API Merchanta");
+        }
 
     }
 }

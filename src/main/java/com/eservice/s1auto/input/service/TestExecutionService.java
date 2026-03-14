@@ -1,10 +1,9 @@
 package com.eservice.s1auto.input.service;
 
-
 import com.eservice.s1auto.input.TestData;
 import com.eservice.s1auto.input.TestDataInput;
+import com.eservice.s1auto.logs.LoggerBuilder;
 import com.eservice.s1auto.output.TestExecutionResponse;
-import com.eservice.s1auto.service.TestCaseRunner;
 import com.eservice.s1auto.service.testcase.TestCaseExecutorFactory;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +11,24 @@ import org.springframework.stereotype.Service;
 public class TestExecutionService {
 
     public TestExecutionResponse execute(TestDataInput input) {
-        TestData testData = new TestData(input);
+        try {
+            TestData testData = new TestData(input);
+            Runnable testRunner = TestCaseExecutorFactory.getRunner(testData.getTestCase(), testData);
+            testRunner.run();
 
-        TestCaseRunner runner = TestCaseExecutorFactory.getRunner(testData.getTestCaseType(), testData);
+            return new TestExecutionResponse(
+                    testData.getTestCase().name(),
+                    "SUCCESS",
+                    LoggerBuilder.getLogs()
+            );
 
-        String result = runner.run();
-
-        return new TestExecutionResponse(
-                testData.getTestCaseType().name(),
-                result,
-                "Test finished"
-        );
+        } catch (Exception e) {
+            LoggerBuilder.addToLogs(e.getMessage());
+            return new TestExecutionResponse(
+                    input.getTestCase(),
+                    "FAILED",
+                    LoggerBuilder.getLogs()
+            );
+        }
     }
-
-
 }
