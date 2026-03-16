@@ -10,9 +10,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestExecutionService {
 
+    TestData testData;
+
+    public TestExecutionService(TestData testData) {
+        this.testData = testData;
+    }
+
     public TestExecutionResponse execute(TestDataInput input) {
         try {
-            TestData testData = new TestData(input);
             Runnable testRunner = TestCaseExecutorFactory.getRunner(testData.getTestCase(), testData);
             testRunner.run();
 

@@ -7,7 +7,6 @@ import com.global.api.entities.enums.Environment;
 import com.global.api.logging.IRequestLogger;
 import com.global.api.logging.RequestFileLogger;
 import com.global.api.serviceConfigs.GpApiConfig;
-import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
 

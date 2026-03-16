@@ -6,11 +6,11 @@ import com.eservice.s1auto.sdk.config.CardConfig;
 import com.global.api.entities.exceptions.ApiException;
 import com.global.api.paymentMethods.CreditCardData;
 
-public class SdkAuthTest extends BaseTestClass implements Runnable {
+public class SdkValidateTest extends BaseTestClass implements Runnable {
 
     private final TestData testData;
 
-    public SdkAuthTest(TestData testData) {
+    public SdkValidateTest(TestData testData) {
         this.testData = testData;
     }
 
@@ -21,10 +21,9 @@ public class SdkAuthTest extends BaseTestClass implements Runnable {
         try {
             response =
                     cardData
-                            .authorize(testData.getAmount())
+                            .verify()
                             .withCurrency(testData.getCurrency())
                             .execute();
-
 
         } catch (ApiException ex) {
             testFailed(ex.getMessage());
