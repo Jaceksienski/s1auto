@@ -10,13 +10,11 @@ import com.eservice.s1auto.service.merchant.MerchantType;
 import com.eservice.s1auto.service.testcase.TestCaseType;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
 @Slf4j
 @Getter
-@Component
 public class TestData {
 
     private MerchantTemplates merchantTemplates;
